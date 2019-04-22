@@ -21,10 +21,10 @@ int main(int argc, char *argv[])
 //        exit(1);
 //    }
 
-    //SurfBreak surfbreak;
-    //surfbreak.drawLeds(argv[1]);
-    getBuoyData("https://www.ndbc.noaa.gov/data/realtime2/46042.txt", "bdata.txt");
-    
+    BuoyHandler bhandler(46042); 
+    bhandler.updateBuoyData();
+   
+    bhandler.buoyToString();
 
     return 0;
 }

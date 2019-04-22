@@ -1,1 +1,4 @@
 bdata.txt
+*.swp
+*.o
+bin/*
