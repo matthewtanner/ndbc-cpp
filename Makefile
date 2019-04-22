@@ -5,14 +5,14 @@ INCLUDE		:=
 
 all: /bin/$(EXEC)
 
-/bin/$(EXEC): main.o BuoyDataFetcher.o
-	$(CC) $(CFLAGS) $(INCLUDE) src/main.o src/BuoyDataFetcher.o -o bin/$(EXEC) -lcurl
+/bin/$(EXEC): main.o BuoyHandler.o
+	$(CC) $(CFLAGS) $(INCLUDE) src/main.o src/BuoyHandler.o -o bin/$(EXEC) -lcurl
 
 main.o:
 	$(CC) $(CFLAGS) $(INCLUDE) -c src/main.cpp -o src/main.o 
 
-BuoyDataFetcher.o: 
-	$(CC) $(CFLAGS) $(INCLUDE) -c src/BuoyDataFetcher.cpp -o src/BuoyDataFetcher.o
+BuoyHandler.o: 
+	$(CC) $(CFLAGS) $(INCLUDE) -c src/BuoyHandler.cpp -o src/BuoyHandler.o
 
 clean:
 	rm -f src/*.o

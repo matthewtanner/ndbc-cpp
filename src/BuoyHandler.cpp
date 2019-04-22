@@ -3,7 +3,7 @@
 #include <curl/curl.h>
 #include <sstream>
 
-#include "BuoyDataFetcher.h"
+#include "BuoyHandler.h"
 
 #define BUOY_FILE_COL_WDIR  5
 #define BUOY_FILE_COL_WSPD  6

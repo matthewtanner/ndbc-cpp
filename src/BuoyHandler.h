@@ -1,5 +1,5 @@
-#ifndef BUOY_DATA_FETCHER_H
-#define BUOY_DATA_FETCHER_H
+#ifndef BUOY_HANDLER_H
+#define BUOY_HANDLER_H
 
 #include <string>
 #include <cstdint>
@@ -30,5 +30,5 @@ class BuoyHandler
 };
 
 
-#endif /* BUOY_DATA_FETCHER_H */
+#endif /* BUOY_HANDLER_H */
 
