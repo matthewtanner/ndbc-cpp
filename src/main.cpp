@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <cstdlib>
 
-#include "BuoyHandler.h"
+#include "NdbcBuoy.h"
 
 using namespace std;
 
@@ -14,17 +14,15 @@ void usage()
 
 int main(int argc, char *argv[]) 
 {
-    
-    /* Validate args */
-//    if(argc != 2) {
-//        usage();
-//        exit(1);
-//    }
+    uint8_t i;
 
-    BuoyHandler bhandler(46042); 
-    bhandler.updateBuoyData();
+    NdbcBuoy buoy(46042); 
+    buoy.updateData();
    
-    bhandler.buoyToString();
-
+////    buoy.buoyToString();
+//    for (i = 0; i < buoy.cwind.data.size(); i++)
+//    {
+//        cout << buoy.cwind.data[i] << endl;
+//    }
     return 0;
 }
