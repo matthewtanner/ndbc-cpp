@@ -14,7 +14,7 @@ void usage()
 
 int main(int argc, char *argv[]) 
 {
-    uint8_t i;
+//    uint8_t i;
 
     NdbcBuoy buoy(46042); 
     buoy.updateData();

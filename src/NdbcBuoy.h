@@ -87,8 +87,8 @@ class NdbcBuoy
             std::vector<float> data;
         } cwind;
         
-        NdbcBuoy(int buoy);
-        int updateData(int buoy);
+        NdbcBuoy(int station);
+        int updateData(int station);
         int updateData();
     
     private:
