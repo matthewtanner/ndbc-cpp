@@ -1,4 +1,4 @@
-# ndbcbuoy
+# cbuoy
 Gathers NDBC buoy data.  
   
 See the NDBC Web Data Guide below for details on txt, spec and cwind data this
