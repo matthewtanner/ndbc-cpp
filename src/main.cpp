@@ -14,15 +14,17 @@ void usage()
 
 int main(int argc, char *argv[]) 
 {
-//    uint8_t i;
-
+    int i;
+    
     NdbcBuoy buoy(46042); 
     buoy.updateData();
    
-////    buoy.buoyToString();
-//    for (i = 0; i < buoy.cwind.data.size(); i++)
-//    {
-//        cout << buoy.cwind.data[i] << endl;
-//    }
+    for (i = buoy.SPEC_DATA_YY; i < buoy.NUM_SPEC_ELEMENTS;
+                i++)   
+    {
+   
+         cout << buoy.getSpecData((NdbcBuoy::specDataIndex)i) << endl;
+    }
+
     return 0;
 }

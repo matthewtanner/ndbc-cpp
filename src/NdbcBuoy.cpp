@@ -55,6 +55,7 @@ int NdbcBuoy::parseBuoyData(string rawdata, vector<float> &data)
     return 0; 
 }
 
+
 int NdbcBuoy::fetchBuoyData(string *buf, string dataset)
 {
     CURL *bdata;
@@ -89,6 +90,7 @@ int NdbcBuoy::updateData(int station)
     return this->updateData();
 }
 
+
 int NdbcBuoy::updateData()
 {
     string txtdata_str;
@@ -100,34 +102,53 @@ int NdbcBuoy::updateData()
     {
         cout << "Error fetching txt data" << endl;
     }
-    parseBuoyData(txtdata_str, this->txt.data);
+    parseBuoyData(txtdata_str, this->txt_data);
     
     /* Update spec */
     if (fetchBuoyData(&specdata_str, "spec") < 0)
     {
         cout << "Error fetching txt data" << endl;
     }
-    parseBuoyData(specdata_str, this->spec.data);
+    parseBuoyData(specdata_str, this->spec_data);
 
     /* Update cwind */
     if (fetchBuoyData(&cwinddata_str, "cwind") < 0)
     {
         cout << "Error fetching txt data" << endl;
     }
-    parseBuoyData(cwinddata_str, this->cwind.data);
+    parseBuoyData(cwinddata_str, this->cwind_data);
 
     return 0;
 }
 
+
+float NdbcBuoy::getTxtData(enum txtDataIndex index)
+{
+    return txt_data[index];
+}
+
+float NdbcBuoy::getSpecData(enum specDataIndex index)
+{
+    return spec_data[index];
+}
+
+float NdbcBuoy::getCwindData(enum cwindDataIndex index)
+{
+    return cwind_data[index];
+}
+
 NdbcBuoy::NdbcBuoy(int station)
+        : txt_data(NUM_TXT_ELEMENTS)
+        , spec_data(NUM_SPEC_ELEMENTS) 
+        , cwind_data(NUM_CWIND_ELEMENTS)
 {
     this->station = station;
 
-    fill(this->txt.data.begin(), this->txt.data.end(),
+    fill(this->txt_data.begin(), this->txt_data.end(),
             BUOYDATA_NOT_AVAILABLE);
-    fill(this->spec.data.begin(), this->spec.data.end(), 
+    fill(this->spec_data.begin(), this->spec_data.end(), 
             BUOYDATA_NOT_AVAILABLE);
-    fill(this->cwind.data.begin(), this->cwind.data.end(), 
+    fill(this->cwind_data.begin(), this->cwind_data.end(), 
             BUOYDATA_NOT_AVAILABLE);
 }
 
