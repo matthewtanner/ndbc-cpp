@@ -1,2 +1,2 @@
 # ndbcbuoy
-c++ NDBC buoy data gathering library
+Gathers NDBC buoy data.
