@@ -1,4 +1,4 @@
-./test/cbuoy-dump
-./lib/libcbuoy.a
+cbuoy-dump
+libcbuoy.a
 *.swp
 *.o
