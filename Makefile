@@ -1,19 +1,27 @@
+LIBDIR		:= lib
+TESTDIR		:= test
+LIBTGT		:= $(LIBDIR)/libcbuoy.a
+TESTTGT		:= $(TESTDIR)/cbuoy-dump
+TESTINCS    := -I$(LIBDIR)
+TESTLIBS    := -L$(LIBDIR) -lcbuoy -lcurl
 CC			:= g++
 CFLAGS		:= -Wall
-EXEC		:= bdata
-INCLUDE		:= 
 
-all: /bin/$(EXEC)
+all: $(TESTTGT) $(LIBTGT)
+test: $(TESTTGT)
+lib: $(LIBTGT)
 
-/bin/$(EXEC): main.o NdbcBuoy.o
-	$(CC) $(CFLAGS) $(INCLUDE) src/main.o src/NdbcBuoy.o -o bin/$(EXEC) -lcurl
+$(TESTTGT): $(LIBTGT)
+	$(CC) $(CFLAGS) $(TESTINCS) $(TESTTGT).cpp $(TESTLIBS) -o $(TESTTGT)
 
-main.o:
-	$(CC) $(CFLAGS) $(INCLUDE) -c src/main.cpp -o src/main.o 
+$(LIBTGT): NdbcBuoy.o
+	ar rcs $(LIBTGT) $(LIBDIR)/NdbcBuoy.o
 
 NdbcBuoy.o: 
-	$(CC) $(CFLAGS) $(INCLUDE) -c src/NdbcBuoy.cpp -o src/NdbcBuoy.o
+	$(CC) $(CFLAGS) -c $(LIBDIR)/NdbcBuoy.cpp -o $(LIBDIR)/NdbcBuoy.o
 
 clean:
-	rm -f src/*.o
-	rm -f bin/$(EXEC)
+	rm -f $(LIBDIR)/*.o
+	rm -f $(LIBTGT)
+	rm -f $(TESTDIR)/*.o
+	rm -f $(TESTTGT)
