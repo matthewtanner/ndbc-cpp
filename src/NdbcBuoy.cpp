@@ -32,7 +32,7 @@
 #include <curl/curl.h>
 #include <sstream>
 
-#include "NdbcBuoy.h"
+#include <NdbcBuoy.h>
 
 #define FEET_PER_METER 3.28084
 

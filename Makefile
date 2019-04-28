@@ -1,8 +1,10 @@
 LIBDIR		:= lib
 TESTDIR		:= test
+SRCDIR		:= src
+INCDIR		:= include
 LIBTGT		:= $(LIBDIR)/libcbuoy.a
 TESTTGT		:= $(TESTDIR)/cbuoy-dump
-TESTINCS    := -I$(LIBDIR)
+INCLUDES    := -I$(SRCDIR) -I$(INCDIR)
 TESTLIBS    := -L$(LIBDIR) -lcbuoy -lcurl
 CC			:= g++
 CFLAGS		:= -Wall
@@ -12,13 +14,13 @@ test: $(TESTTGT)
 lib: $(LIBTGT)
 
 $(TESTTGT): $(LIBTGT)
-	$(CC) $(CFLAGS) $(TESTINCS) $(TESTTGT).cpp $(TESTLIBS) -o $(TESTTGT)
+	$(CC) $(CFLAGS) $(INCLUDES) $(TESTTGT).cpp $(TESTLIBS) -o $(TESTTGT)
 
-$(LIBTGT): NdbcBuoy.o
+$(LIBTGT): $(LIBDIR)/NdbcBuoy.o $(INCDIR)/NdbcBuoy.h
 	ar rcs $(LIBTGT) $(LIBDIR)/NdbcBuoy.o
 
-NdbcBuoy.o: 
-	$(CC) $(CFLAGS) -c $(LIBDIR)/NdbcBuoy.cpp -o $(LIBDIR)/NdbcBuoy.o
+$(LIBDIR)/NdbcBuoy.o: 
+	$(CC) $(CFLAGS) $(INCLUDES) -c $(SRCDIR)/NdbcBuoy.cpp -o $(LIBDIR)/NdbcBuoy.o
 
 clean:
 	rm -f $(LIBDIR)/*.o
