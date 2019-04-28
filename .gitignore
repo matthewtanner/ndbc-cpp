@@ -1,4 +1,4 @@
-bdata.txt
+./test/cbuoy-dump
+./lib/libcbuoy.a
 *.swp
 *.o
-bin/*
