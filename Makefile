@@ -13,6 +13,8 @@ all: $(TESTTGT) $(LIBTGT)
 test: $(TESTTGT)
 lib: $(LIBTGT)
 
+#### TODO use makefile variables here. To many hard-coded file names.
+
 $(TESTTGT): $(LIBTGT)
 	$(CC) $(CFLAGS) $(INCLUDES) $(TESTTGT).cpp $(TESTLIBS) -o $(TESTTGT)
 

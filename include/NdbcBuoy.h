@@ -40,7 +40,7 @@ class NdbcBuoy
     public:
 
         const float BUOYDATA_NOT_AVAILABLE = -998;
-        const float BUOYDATA_ERROR = -999;
+        const float BUOYDATA_ERROR         = -999;
         int station;
         
         enum txtDataIndex
@@ -118,5 +118,6 @@ class NdbcBuoy
         int parseBuoyData(std::string rawdata, std::vector<float> &data);
 };
 
-#endif /* BUOY_HANDLER_H */
+#endif /* NDBC_BUOY_H */
+
 
