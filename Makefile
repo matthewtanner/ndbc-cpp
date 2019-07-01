@@ -2,10 +2,10 @@ LIBDIR		:= lib
 TESTDIR		:= test
 SRCDIR		:= src
 INCDIR		:= include
-LIBTGT		:= $(LIBDIR)/libcbuoy.a
-TESTTGT		:= $(TESTDIR)/cbuoy-dump
+LIBTGT		:= $(LIBDIR)/libndbccpp.a
+TESTTGT		:= $(TESTDIR)/test-ndbccpp
 INCLUDES    := -I$(SRCDIR) -I$(INCDIR)
-TESTLIBS    := -L$(LIBDIR) -lcbuoy -lcurl
+TESTLIBS    := -L$(LIBDIR) -lndbccpp -lcurl
 CC			:= g++
 CFLAGS		:= -Wall
 

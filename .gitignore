@@ -1,4 +1,4 @@
-cbuoy-dump
-libcbuoy.a
+test-ndbccpp
+libndbccpp.a
 *.swp
 *.o
